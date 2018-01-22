@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+    <link rel="stylesheet" href="dist/css/pageguide.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div id="examplePlusWelcome">
+        <div id="exampleContent">
+            <div class="wrapper">
+                <div class="inner">
+                    <div id="place-a" class="place-item">
+                        
+                    </div>
+                    <div id="place-b" class="place-item">
+                        
+                    </div>
+                    <div id="place-c" class="place-item">
+                        
+                    </div>
+                    <div id="place-d" class="place-item">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- this set of pageguide steps will be displayed by default. -->
+            <ul id="tlyPageGuide" data-tourtitle="check out these elements">
+              <!-- use these classes to indicate where each number bubble should be
+              positioned. data-tourtarget should contain the selector for the element to
+              which you want to attach this pageguide step. -->
+              <li class="tlypageguide_right" data-tourtarget="#place-a">
+                <h3>Place A</h3>
+                <p>Here is the first item description. The number will appear to the left of the element.</p>
+              </li>
+              <li class="tlypageguide_right" data-tourtarget="#place-b">
+                <h3>Place B</h3>
+                <p>Here is the second item description. The number will appear to the right of the element.</p>
+              </li>
+              <li class="tlypageguide_top" data-tourtarget="#place-c">
+                <h3>Place C</h3>
+                <p>Here is the third item description. The number will appear above the element.</p>
+              </li>
+              <li class="tlypageguide_left" data-tourtarget="#place-d">
+                <h3>Place D</h3>
+                <p>Here is the fourth item description. The number will appear below the element.</p>
+              </li>
+            </ul>
+
+            <!-- this is a second set of pageguide steps. it is possible to have multiple
+            pageguides per page, but you will need to initiate them separately, using the
+            steps_element parameter to specify the selectors for each. -->
+            <ul id="titlePageGuide" data-tourtitle="check out these titles">
+              <li class="tlypageguide_top" data-tourtarget=".first_element_to_target h3">
+                Here is the first title!
+              </li>
+              <li class="tlypageguide_top" data-tourtarget="#second_element_to_target h3">
+                This fine specimen is the second title.
+              </li>
+              <li class="tlypageguide_top" data-tourtarget=".third_element_to_target h3">
+                Third title reporting for duty.
+              </li>
+              <li class="tlypageguide_top" data-tourtarget="#fourth_element_to_target h3">
+                #fourthtitle
+              </li>
+            </ul>
+        </div>
+        
+        <!--
+        <div class="tlyPageGuideWelcome">
+            <p>Welcome to my new page! pageguide is here to help you learn more.</p>
+            <button class="tlypageguide_start">let's go</button>
+            <button class="tlypageguide_ignore">not now</button>
+            <button class="tlypageguide_dismiss">got it, thanks</button>
+        </div>
+        -->
+
+        <div id="pg-custom-toggle"><div class="test">參觀導覽地圖</div></div>
+    </div>
+
+    <script src="dist/js/jquery.min.js"></script>
+    <script type="text/javascript" src="dist/js/pageguide.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var data = {};
+            var pageguide = tl.pg.init({
+                custom_open_button: "#pg-custom-toggle",
+                auto_refresh: true,
+                ready_callback: function() {
+                    console.log("ready!");
+                },
+                track_events_cb : function(event){
+                    console.log('cb: ' + event);
+                    if (event == "PG.open") {
+                        var delay = 1000; //1 second
+
+                        setTimeout(function() {
+                            console.log($(".tlypageguide-open .tlyPageGuideStepIndex").length);
+                            
+                            $.getJSON('data/data.json', function (json) {
+                                data = json;
+                                console.log(data);
+
+                               $(".tlypageguide-open .tlypageguide_shadow").each(function(i) {
+                                    var $this = $(this);
+                                    var $stepIndex = $this.find(".tlyPageGuideStepIndex");
+                                    var item = data[i];
+                                    var content = "<div class='inner'>";
+
+                                    if ("title" in item) {
+                                        content += "<h3>" + item.title + "</h3>";
+                                    }
+                                    if ("desc" in item) {
+                                        content += "<p>" + item.desc + "</p>";
+                                    }
+
+                                    content += "</div>";
+
+                                    $this.attr("data-target-id", item.tourtarget);
+
+                                    $stepIndex.html(content);
+                                    $this.addClass("is-override");
+                                });
+
+                                $(".tlypageguide-open .tlyPageGuideStepIndex").on("click", function() {
+                                    console.log("!!!!!!!!");
+                                    var $this = $(this);
+                                    var $shadow = $this.parent(".tlypageguide_shadow");
+                                    var selectorhash = $shadow.attr("data-selectorhash");
+                                    console.log("data selectorhash: "+selectorhash);
+                                });
+                            });
+                        }, delay);
+                    }
+                },
+                handle_doc_switch: function(targetKey, prevTargetKey) {
+                    console.log(targetKey);
+                    console.log(prevTargetKey);
+                }
+            });
+        $("#tlyPageGuideWrapper #tlyPageGuideMessages .tlypageguide_back").appendTo("body");
+        $("#tlyPageGuideWrapper #tlyPageGuideMessages .tlypageguide_fwd").appendTo("body");
+        //console.log($("#tlyPageGuideContent").length);
+        //console.log($("#tlyPageGuideContent .tlyPageGuideStepIndex").length);
+
+        $("#pg-custom-toggle .test").on("click", function(e) {
+            //console.log(e);
+            //console.log("toggle");
+            if ($(".tlypageguide-open").length) {
+                console.log("open");
+
+            }
+        });
+        });
+    </script>
+</body>
+</html>

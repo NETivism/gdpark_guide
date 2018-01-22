@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Place A",
+    "desc": "Here is place A. The number will appear to the left of the element",
+    "tourtarget": "place-a",
+    "indices": "tlypageguide_right"
+  },
+  {
+    "title": "Place B",
+    "desc": "Here is place B. The number will appear to the right of the element.",
+    "tourtarget": "place-b",
+    "indices": "tlypageguide_right"
+  },
+  {
+    "title": "Place C",
+    "desc": "Here is place C. The number will appear to the left of the element",
+    "tourtarget": "place-c",
+    "indices": "tlypageguide_top"
+  },
+  {
+    "title": "Place D",
+    "desc": "Here is place D. The number will appear to the left of the element",
+    "tourtarget": "place-d",
+    "indices": "tlypageguide_bottom"
+  }
+]

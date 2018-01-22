@@ -1,0 +1,202 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    /*font: inherit;*/
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html, body, html > body {
+  font: 100%/1.7 'PingFang TC', 'Heiti TC', 'Noto Sans TC', 'Noto Sans CJK TC', source-han-sans-traditional, 'Microsoft JhengHei', sans-serif;
+}
+.wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background: url(../images/bg_1920.jpg) no-repeat center center / cover;
+}
+.inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.place-item {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    background: #F44336;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+}
+#place-a {
+    top: 350px;
+    left: 280px;
+}
+#place-b {
+  top: 280px;
+  right: 50%;
+  margin: 0 -100px 0 0;
+}
+#place-c {
+  bottom: 320px;
+  left: 500px;
+}
+#place-d {
+    right: 200px;
+    bottom: 200px;
+}
+#titlePageGuide {
+    display: none;
+}
+
+#tlyPageGuideWrapper #tlyPageGuideMessages .tlypageguide_back {
+
+}
+
+#tlyPageGuideWrapper #tlyPageGuideMessages .tlypageguide_index {
+
+}
+#tlyPageGuideWrapper #tlyPageGuideMessages .tlypageguide_fwd {
+
+}
+.tlypageguide_back,
+.tlypageguide_fwd {
+    display: none;
+    background: rgba(0,0,0,.5);
+    color: #fff;
+    text-decoration: none;
+    width: 100px;
+    text-align: center;
+}
+.tlypageguide-open .tlypageguide_back,
+.tlypageguide-open .tlypageguide_fwd {
+    display: block;
+}
+.tlypageguide_back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.tlypageguide_fwd {
+    position: absolute;
+    top: 20px;
+    left: 140px;
+}
+.tlypageguide_shadow {
+    display: none !important;
+    visibility: hidden;
+    opacity: 0;
+}
+.tlypageguide_shadow.tlypageguide-active.is-override {
+    display: block !important;
+    visibility: visible;
+    opacity: 1;
+}
+.tlyPageGuideStepIndex .inner {
+   position: relative;
+   line-height: 1.5;
+   padding: 10px;
+   width: 100%;
+    text-align: left;
+}
+.tlyPageGuideStepIndex .inner h3 {
+  font-size: 16px;
+}
+.tlyPageGuideStepIndex .inner p {
+  font-size: 13px;
+ 
+}
+.tlypageguide-active .tlyPageGuideStepIndex {
+  width: 300px;
+  height: 150px;
+  max-height: none;
+}
+.tlypageguide-active .tlyPageGuideStepIndex.tlypageguide_top {
+  top: -165px;
+}
+.tlypageguide-active .tlyPageGuideStepIndex.tlypageguide_right {
+  right: -315px; 
+}
+.tlypageguide-active .tlyPageGuideStepIndex.tlypageguide_bottom {
+  bottom: -165px;
+}
+.tlypageguide-active .tlyPageGuideStepIndex.tlypageguide_left {
+  left: -315px;
+}
+#pg-custom-toggle {
+    position: fixed;
+    top: 50%;
+    left: 50px;
+    margin: -50px 0 0 0;
+    color: #fff;
+    background: rgba(0,0,0,.3);
+    cursor: pointer;
+    transition: all .3s;
+    line-height: 1.3;
+    border-radius: 5px;
+}
+#pg-custom-toggle:hover {
+    background: rgba(0,0,0,.7);
+}
+#pg-custom-toggle .test {
+    padding: 15px;
+}
+.tlypageguide-open #pg-custom-toggle {
+    background: rgba(0,0,0,.7);
+}
+#tlyPageGuideMessages {
+    display: none !important;
+}
