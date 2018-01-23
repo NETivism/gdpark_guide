@@ -81,6 +81,9 @@ html, body, html > body {
     background: #F44336;
     box-shadow: 0 0 5px rgba(0,0,0,.5);
 }
+.tlypageguide-open .place-item {
+  cursor: pointer;
+}
 #place-a {
     top: 350px;
     left: 280px;

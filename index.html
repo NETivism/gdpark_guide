@@ -123,6 +123,11 @@
                                     $this.addClass("is-override");
                                 });
 
+                                $(".tlypageguide-open .place-item").on("click", function() {
+                                    var id = $(this).attr("id");
+                                    $(".tlypageguide_shadow[data-target-id='" + id + "'] .tlyPageGuideStepIndex").click();
+                                });
+
                                 $(".tlypageguide-open .tlyPageGuideStepIndex").on("click", function() {
                                     console.log("!!!!!!!!");
                                     var $this = $(this);
