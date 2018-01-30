@@ -89,6 +89,7 @@
                 auto_refresh: true,
                 ready_callback: function() {
                     console.log("ready!");
+                    $("#pg-custom-toggle").click();
                 },
                 track_events_cb : function(event){
                     console.log('cb: ' + event);
